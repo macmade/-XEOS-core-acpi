@@ -58,18 +58,31 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
-
+ 
 /* $Id$ */
 
 /*!
- * @file            __ACPI.c
+ * @header          __acpi.h
  * @author          Jean-David Gadina
  * @copyright       (c) 2010-2012, Jean-David Gadina - www.xs-labs.com
  */
 
-#include "__private/acpi.h"
-#include "acpi.h"
-#include <stdlib.h>
+#ifndef __ACPI___ACPI_H__
+#define __ACPI___ACPI_H__
+#pragma once
 
-int ( * __ACPI_LoggingFunction )( const char *, va_list ) = NULL;
-bool __ACPI_LoggingEnabled                                = false;
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdbool.h>
+#include <stdarg.h>
+
+extern int ( * __ACPI_LoggingFunction )( const char *, va_list );
+extern bool __ACPI_LoggingEnabled;
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __ACPI___ACPI_H__ */
