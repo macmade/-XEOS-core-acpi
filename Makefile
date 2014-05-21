@@ -108,23 +108,27 @@ clean:
 	@$(PRINT) $(PROMPT)"Cleaning all build files"
 	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
 	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_BIN)libcore-acpi.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_BIN)libcore-acpi.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_BIN)libcore-acpi-acpica.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_BIN)libcore-acpi-acpica.*
 
 # ACPI support files
 acpi: $(_FILES)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_32,core-acpi,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"libcore-acpi.a"$(COLOR_NONE)
+	@$(call XEOS_FUNC_LIB_STATIC_32,libcore-acpi,$^)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_64,core-acpi,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"libcore-acpi.a"$(COLOR_NONE)
+	@$(call XEOS_FUNC_LIB_STATIC_64,libcore-acpi,$^)
 
 # ACPICA library
 acpica: ARGS_CC_32 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_32)
 acpica: ARGS_CC_64 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_64)
 acpica: $(_FILES_ACPICA)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi-acpica.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_32,core-acpi-acpica,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"libcore-acpi-acpica.a"$(COLOR_NONE)
+	@$(call XEOS_FUNC_LIB_STATIC_32,libcore-acpi-acpica,$^)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi-acpica.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_64,core-acpi-acpica,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"libcore-acpi-acpica.a"$(COLOR_NONE)
+	@$(call XEOS_FUNC_LIB_STATIC_64,libcore-acpi-acpica,$^)
