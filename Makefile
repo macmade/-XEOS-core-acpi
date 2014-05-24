@@ -108,10 +108,10 @@ clean:
 	@$(PRINT) $(PROMPT)"Cleaning all build files"
 	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
 	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_BIN)libcore-acpi.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_BIN)libcore-acpi.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_BIN)libcore-acpi-acpica.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_BIN)libcore-acpi-acpica.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)core-acpi.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)core-acpi.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)core-acpi-acpica.*
+	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)core-acpi-acpica.*
 
 # ACPI support files
 acpi: $(_FILES)
