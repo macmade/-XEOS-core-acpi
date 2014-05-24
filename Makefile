@@ -116,19 +116,19 @@ clean:
 # ACPI support files
 acpi: $(_FILES)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"libcore-acpi.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_32,libcore-acpi,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi$(EXT_OBJ)"$(COLOR_NONE)
+	@$(LD_32) -r $(call XEOS_FUNC_FILES_OBJECT_32,$^) -o $(PATH_BUILD_32_OBJ)core-acpi$(EXT_OBJ)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"libcore-acpi.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_64,libcore-acpi,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi$(EXT_OBJ)"$(COLOR_NONE)
+	@$(LD_64) -r $(call XEOS_FUNC_FILES_OBJECT_64,$^) -o $(PATH_BUILD_64_OBJ)core-acpi$(EXT_OBJ)
 
 # ACPICA library
 acpica: ARGS_CC_32 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_32)
 acpica: ARGS_CC_64 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_64)
 acpica: $(_FILES_ACPICA)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"libcore-acpi-acpica.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_32,libcore-acpi-acpica,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi-acpica$(EXT_OBJ)"$(COLOR_NONE)
+	@$(LD_32) -r $(call XEOS_FUNC_FILES_OBJECT_32,$^) -o $(PATH_BUILD_32_OBJ)core-acpi-acpica$(EXT_OBJ)
 	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating the library archive"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"libcore-acpi-acpica.a"$(COLOR_NONE)
-	@$(call XEOS_FUNC_LIB_STATIC_64,libcore-acpi-acpica,$^)
+	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi-acpica$(EXT_OBJ)"$(COLOR_NONE)
+	@$(LD_64) -r $(call XEOS_FUNC_FILES_OBJECT_64,$^) -o $(PATH_BUILD_64_OBJ)core-acpi-acpica$(EXT_OBJ)
