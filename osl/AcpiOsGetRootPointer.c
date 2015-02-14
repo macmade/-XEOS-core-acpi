@@ -71,7 +71,7 @@
 
 ACPI_PHYSICAL_ADDRESS AcpiOsGetRootPointer( void )
 {
-	ACPI_SIZE ret;
+	ACPI_PHYSICAL_ADDRESS ret;
     
 	AcpiFindRootPointer( &ret );
     
