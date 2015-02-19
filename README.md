@@ -1,7 +1,7 @@
 XEOS / core / acpi
 ==================
 
-[![Build Status](https://img.shields.io/travis/macmade/XEOS.svg?branch=master&style=flat)](https://travis-ci.org/macmade/XEOS)
+[![Build Status](https://img.shields.io/travis/macmade/XEOS-core-acpi.svg?branch=master&style=flat)](https://travis-ci.org/macmade/XEOS-core-acpi)
 [![Issues](http://img.shields.io/github/issues/macmade/XEOS-core-acpi.svg?style=flat)](https://github.com/macmade/XEOS-core-acpi/issues)
 ![Status](https://img.shields.io/badge/status-active-brightgreen.svg?style=flat)
 ![License](https://img.shields.io/badge/license-xeos-brightgreen.svg?style=flat)
