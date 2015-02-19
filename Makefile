@@ -59,76 +59,48 @@
 
 # $Id$
 
-include ../../../Makefile-Config.mk
+include make/Config.mk
+include make/Targets.mk
 
-#-------------------------------------------------------------------------------
-# Display
-#-------------------------------------------------------------------------------
+ARGS_CC_INC  += -I acpica/source/include/
+PROMPT       := XEOS SOURCE CORE ACPI
+DEPS         := XEOS-lib-posix XEOS-lib-c99 XEOS-lib-system XEOS-core-xeos
+FILES        := $(call XEOS_FUNC_C_FILES,$(DIR_SRC)acpi/) \
+                $(call XEOS_FUNC_C_FILES,$(DIR_SRC)osl/)
 
-PROMPT  := "    ["$(COLOR_GREEN)" XEOS "$(COLOR_NONE)"]> ["$(COLOR_GREEN)" SRC  "$(COLOR_NONE)"]> ["$(COLOR_GREEN)" CORE "$(COLOR_NONE)"]> ["$(COLOR_GREEN)" ACPI "$(COLOR_NONE)"]> *** "
+ifdef ACPICA
 
-#-------------------------------------------------------------------------------
-# Files
-#-------------------------------------------------------------------------------
+ARGS_CC_WARN += -Wno-padded \
+                -Wno-used-but-marked-unused \
+                -Wno-sign-conversion \
+                -Wno-unused-macros \
+                -Wno-unused-parameter \
+                -Wno-missing-variable-declarations \
+                -Wno-cast-align \
+                -Wno-shorten-64-to-32 \
+                -Wno-documentation-unknown-command
+FILES        := $(call XEOS_FUNC_C_FILES,acpica/source/components/debugger/)     \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/disassembler/) \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/dispatcher/)   \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/events/)       \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/executer/)     \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/hardware/)     \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/namespace/)    \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/parser/)       \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/resources/)    \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/tables/)       \
+                $(call XEOS_FUNC_C_FILES,acpica/source/components/utilities/)
 
-_FILES          = $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpi/)
-_FILES         += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)osl/)
+endif
 
-_FILES_ACPICA   = $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/debugger/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/disassembler/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/dispatcher/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/events/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/executer/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/hardware/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/namespace/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/parser/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/resources/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/tables/)
-_FILES_ACPICA  += $(call XEOS_FUNC_C_OBJ,$(PATH_SRC_CORE_ACPI)acpica/source/components/utilities/)
-
-#-------------------------------------------------------------------------------
-# Built-in targets
-#-------------------------------------------------------------------------------
-
-# Declaration for phony targets, to avoid problems with local files
-.PHONY: all clean acpi acpica
-
-#-------------------------------------------------------------------------------
-# Phony targets
-#-------------------------------------------------------------------------------
-
-# Build the full project
-all: acpi acpica
+all: obj-build
+	
+	@if [ -z "$(ACPICA)" ]; then        \
+		rm $(DIR_BUILD)*$(EXT_OBJ);     \
+		rm $(DIR_BUILD)*$(EXT_OBJ_PIC); \
+		$(MAKE) ACPICA=1;               \
+	fi
+	
+clean: obj-clean
 	
 	@:
-
-# Cleans the build files
-clean:
-	
-	@$(PRINT) $(PROMPT)"Cleaning all build files"
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)$(subst $(PATH_SRC),,$(PATH_SRC_CORE_ACPI))
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)core-acpi.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)core-acpi.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_32_OBJ)core-acpi-acpica.*
-	@$(RM) $(ARGS_RM) $(PATH_BUILD_64_OBJ)core-acpi-acpica.*
-
-# ACPI support files
-acpi: $(_FILES)
-	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi$(EXT_OBJ)"$(COLOR_NONE)
-	@$(LD_32) -r $(call XEOS_FUNC_FILES_OBJECT_32,$^) -o $(PATH_BUILD_32_OBJ)core-acpi$(EXT_OBJ)
-	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi$(EXT_OBJ)"$(COLOR_NONE)
-	@$(LD_64) -r $(call XEOS_FUNC_FILES_OBJECT_64,$^) -o $(PATH_BUILD_64_OBJ)core-acpi$(EXT_OBJ)
-
-# ACPICA library
-acpica: ARGS_CC_32 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_32)
-acpica: ARGS_CC_64 := -include acpi/acpica-clang-warnings.h -iquote $(PATH_SRC_CORE_ACPI)include/acpi/acpica $(ARGS_CC_64)
-acpica: $(_FILES_ACPICA)
-	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 32 bits ]: "$(COLOR_GRAY)"core-acpi-acpica$(EXT_OBJ)"$(COLOR_NONE)
-	@$(LD_32) -r $(call XEOS_FUNC_FILES_OBJECT_32,$^) -o $(PATH_BUILD_32_OBJ)core-acpi-acpica$(EXT_OBJ)
-	
-	@$(PRINT) $(PROMPT)$(COLOR_CYAN)"Generating main object file"$(COLOR_NONE)" [ 64 bits ]: "$(COLOR_GRAY)"core-acpi-acpica$(EXT_OBJ)"$(COLOR_NONE)
-	@$(LD_64) -r $(call XEOS_FUNC_FILES_OBJECT_64,$^) -o $(PATH_BUILD_64_OBJ)core-acpi-acpica$(EXT_OBJ)
