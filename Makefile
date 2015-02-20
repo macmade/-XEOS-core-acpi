@@ -70,15 +70,17 @@ FILES        := $(call XEOS_FUNC_C_FILES,$(DIR_SRC)acpi/) \
 
 ifdef ACPICA
 
-ARGS_CC_WARN += -Wno-padded \
-                -Wno-used-but-marked-unused \
-                -Wno-sign-conversion \
-                -Wno-unused-macros \
-                -Wno-unused-parameter \
+ARGS_CC_WARN += -Wno-padded                        \
+                -Wno-used-but-marked-unused        \
+                -Wno-sign-conversion               \
+                -Wno-unused-macros                 \
+                -Wno-unused-parameter              \
                 -Wno-missing-variable-declarations \
-                -Wno-cast-align \
-                -Wno-shorten-64-to-32 \
-                -Wno-documentation-unknown-command
+                -Wno-cast-align                    \
+                -Wno-shorten-64-to-32              \
+                -Wno-documentation-unknown-command \
+                -Wno-reserved-id-macro             \
+                -Wno-cast-qual
 FILES        := $(call XEOS_FUNC_C_FILES,acpica/source/components/debugger/)     \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/disassembler/) \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/dispatcher/)   \
