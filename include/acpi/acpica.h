@@ -67,12 +67,22 @@
  * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef __XEOS_LIB_ACPI_ACPICA_H__
-#define __XEOS_LIB_ACPI_ACPICA_H__
+#ifndef XEOS_CORE_ACPI_ACPICA_H
+#define XEOS_CORE_ACPI_ACPICA_H
 
 #ifdef __clang__
 #pragma clang diagnostic push
-#include <acpi/acpica-clang-warnings.h>
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wunused-macros"
+#pragma clang diagnostic ignored "-Wused-but-marked-unused"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wcast-align"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+#pragma clang diagnostic ignored "-Wdocumentation-unknown-command"
+#pragma clang diagnostic ignored "-Wuninitialized"
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #endif
 
 #include <acpi/acpica/acpi.h>
@@ -81,4 +91,4 @@
 #pragma clang diagnostic pop
 #endif
 
-#endif /* __XEOS_LIB_ACPI_ACPICA_H__ */
+#endif /* XEOS_CORE_ACPI_ACPICA_H */

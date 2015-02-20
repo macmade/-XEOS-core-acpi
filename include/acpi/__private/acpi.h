@@ -62,13 +62,13 @@
 /* $Id$ */
 
 /*!
- * @header          __acpi.h
+ * @header          acpi.h
  * @author          Jean-David Gadina
  * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
  */
 
-#ifndef __XEOS_LIB_ACPI___PRIVATE_ACPI_H__
-#define __XEOS_LIB_ACPI___PRIVATE_ACPI_H__
+#ifndef XEOS_CORE_ACPI___PRIVATE_ACPI_H
+#define XEOS_CORE_ACPI___PRIVATE_ACPI_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -84,4 +84,4 @@ extern bool __ACPI_LoggingEnabled;
 }
 #endif
 
-#endif /* __XEOS_LIB_ACPI___PRIVATE_ACPI_H__ */
+#endif /* XEOS_CORE_ACPI___PRIVATE_ACPI_H */

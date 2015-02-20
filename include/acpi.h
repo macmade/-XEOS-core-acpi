@@ -61,8 +61,8 @@
 
 /* $Id$ */
 
-#ifndef __XEOS_LIB_ACPI_H__
-#define __XEOS_LIB_ACPI_H__
+#ifndef XEOS_CORE_ACPI_H
+#define XEOS_CORE_ACPI_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -75,4 +75,4 @@ extern "C" {
 }
 #endif
 
-#endif /* __XEOS_LIB_ACPI_H__ */
+#endif /* XEOS_CORE_ACPI_H */
