@@ -59,14 +59,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-/* $Id$ */
-
-/*!
- * @file            AcpiOsAcquireLock.c
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #include <acpi/acpica.h>
 
 ACPI_CPU_FLAGS AcpiOsAcquireLock( ACPI_SPINLOCK handle )

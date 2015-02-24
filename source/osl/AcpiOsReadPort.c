@@ -59,14 +59,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-/* $Id$ */
-
-/*!
- * @file            AcpiOsReadPort.c
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsReadPort( ACPI_IO_ADDRESS address, UINT32 * value, UINT32 width )

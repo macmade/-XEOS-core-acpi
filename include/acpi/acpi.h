@@ -61,12 +61,6 @@
  
 /* $Id$ */
 
-/*!
- * @header          acpi.h
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #ifndef XEOS_CORE_ACPI_ACPI_H
 #define XEOS_CORE_ACPI_ACPI_H
 

@@ -59,14 +59,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-/* $Id$ */
-
-/*!
- * @file            AcpiOsExecute.c
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsExecute( ACPI_EXECUTE_TYPE type, ACPI_OSD_EXEC_CALLBACK function, void * context )

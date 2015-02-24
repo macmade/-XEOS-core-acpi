@@ -59,14 +59,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-/* $Id$ */
-
-/*!
- * @file            AcpiOsPhysicalTableOverride.c
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsPhysicalTableOverride( ACPI_TABLE_HEADER * existingTable, ACPI_PHYSICAL_ADDRESS * newAddress, UINT32 * newTableLength )

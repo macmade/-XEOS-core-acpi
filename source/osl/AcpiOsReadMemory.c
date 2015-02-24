@@ -59,14 +59,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-/* $Id$ */
-
-/*!
- * @file            AcpiOsReadMemory.c
- * @author          Jean-David Gadina
- * @copyright       (c) 2010-2013, Jean-David Gadina - www.xs-labs.com
- */
-
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsReadMemory( ACPI_PHYSICAL_ADDRESS address, UINT64 * value, UINT32 width )
