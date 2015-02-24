@@ -59,6 +59,11 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
+/*!
+ * @author          Jean-David Gadina
+ * @copyright       (c) 2010-2015, Jean-David Gadina - www.xs-labs.com
+ */
+
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsWritePciConfiguration( ACPI_PCI_ID * pciID, UINT32 reg, UINT64 value, UINT32 width )

@@ -59,6 +59,11 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
+/*!
+ * @author          Jean-David Gadina
+ * @copyright       (c) 2010-2015, Jean-David Gadina - www.xs-labs.com
+ */
+
 #include <acpi/acpica.h>
 
 ACPI_STATUS AcpiOsGetLine( char * buffer, UINT32 bufferLength, UINT32 * bytesRead )
