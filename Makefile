@@ -83,7 +83,8 @@ ARGS_CC_WARN += -Wno-padded                        \
                 -Wno-shorten-64-to-32              \
                 -Wno-documentation-unknown-command \
                 -Wno-reserved-id-macro             \
-                -Wno-cast-qual
+                -Wno-cast-qual                     \
+                -Wno-format-pedantic
 FILES        += $(call XEOS_FUNC_C_FILES,acpica/source/components/debugger/)     \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/disassembler/) \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/dispatcher/)   \
