@@ -73,6 +73,22 @@ FILES        := $(call XEOS_FUNC_C_FILES,$(DIR_SRC)acpi/) \
 
 ifdef ACPICA
 
+ifneq (,$(findstring true,$(shell echo $(TRAVIS))))
+
+ARGS_CC_WARN += -Wno-padded                        \
+                -Wno-used-but-marked-unused        \
+                -Wno-sign-conversion               \
+                -Wno-unused-macros                 \
+                -Wno-unused-parameter              \
+                -Wno-missing-variable-declarations \
+                -Wno-cast-align                    \
+                -Wno-shorten-64-to-32              \
+                -Wno-documentation-unknown-command \
+                -Wno-reserved-id-macro             \
+                -Wno-cast-qual                     \
+                
+else
+
 ARGS_CC_WARN += -Wno-padded                        \
                 -Wno-used-but-marked-unused        \
                 -Wno-sign-conversion               \
@@ -85,6 +101,9 @@ ARGS_CC_WARN += -Wno-padded                        \
                 -Wno-reserved-id-macro             \
                 -Wno-cast-qual                     \
                 -Wno-format-pedantic
+
+endif
+
 FILES        += $(call XEOS_FUNC_C_FILES,acpica/source/components/debugger/)     \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/disassembler/) \
                 $(call XEOS_FUNC_C_FILES,acpica/source/components/dispatcher/)   \
