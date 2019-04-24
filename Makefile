@@ -85,6 +85,8 @@ ARGS_CC_WARN += -Wno-padded                        \
                 -Wno-shorten-64-to-32              \
                 -Wno-documentation-unknown-command \
                 -Wno-reserved-id-macro             \
+                -Wno-extra-semi-stmt               \
+                -Wno-null-pointer-arithmetic       \
                 -Wno-cast-qual                     \
                 
 else
@@ -100,6 +102,8 @@ ARGS_CC_WARN += -Wno-padded                        \
                 -Wno-documentation-unknown-command \
                 -Wno-reserved-id-macro             \
                 -Wno-cast-qual                     \
+                -Wno-extra-semi-stmt               \
+                -Wno-null-pointer-arithmetic       \
                 -Wno-format-pedantic
 
 endif
